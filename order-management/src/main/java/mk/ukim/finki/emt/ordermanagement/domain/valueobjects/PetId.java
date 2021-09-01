@@ -6,4 +6,11 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class PetId extends DomainObjectId {
+    private PetId(){
+        super(PetId.randomId(PetId.class).getId());
+    }
+
+    public PetId(String uuid){
+        super(uuid);
+    }
 }
