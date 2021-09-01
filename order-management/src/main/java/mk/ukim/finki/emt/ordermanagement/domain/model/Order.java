@@ -1,5 +1,6 @@
 package mk.ukim.finki.emt.ordermanagement.domain.model;
 
+import lombok.Getter;
 import lombok.NonNull;
 import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.Pet;
 import mk.ukim.finki.emt.sharedkernel.domain.base.AbstractEntity;
@@ -10,6 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="orders")
+@Getter
 public class Order extends AbstractEntity<OrderId> {
 
     private boolean isApproved;

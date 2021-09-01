@@ -10,6 +10,9 @@ import mk.ukim.finki.emt.ordermanagement.domain.repository.OrderRepository;
 import mk.ukim.finki.emt.ordermanagement.service.OrderService;
 import mk.ukim.finki.emt.ordermanagement.service.forms.OrderForm;
 import mk.ukim.finki.emt.ordermanagement.service.forms.OrderItemForm;
+import mk.ukim.finki.emt.sharedkernel.domain.events.orders.OrderItemCreated;
+import mk.ukim.finki.emt.sharedkernel.domain.events.orders.OrderItemRemoved;
+import mk.ukim.finki.emt.sharedkernel.infra.DomainEventPublisher;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,6 +28,7 @@ import java.util.Optional;
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
+    private final DomainEventPublisher domainEventPublisher;
     private final Validator validator;
 
     @Override
@@ -36,6 +40,8 @@ public class OrderServiceImpl implements OrderService {
                     , constraintViolations);
         }
         var newOrder = orderRepository.saveAndFlush(toDomainObject(orderForm));
+        newOrder.getOrderItemList().forEach(item->domainEventPublisher.publish(
+                new OrderItemCreated(item.getPetId().getId(), item.getQuantity())));
         return newOrder.getId();
     }
 
@@ -62,6 +68,9 @@ public class OrderServiceImpl implements OrderService {
                 OrderIdNotExistException::new);
         order.addItem(orderItemForm.getPet(),orderItemForm.getQuantity());
         orderRepository.saveAndFlush(order);
+        domainEventPublisher.publish( new OrderItemCreated(
+                orderItemForm.getPet().getId().getId(),
+                orderItemForm.getQuantity()));
     }
 
     @Override
