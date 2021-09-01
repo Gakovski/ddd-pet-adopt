@@ -33,7 +33,9 @@ public class PetClient {
 
     public List<Pet> findAll(){
         try {
-            return restTemplate.exchange(uri().path("/api/product").build().toUri(), HttpMethod.GET,null, new ParameterizedTypeReference<List<Pet>>() {
+            return restTemplate.exchange(uri().path("/api/pet").
+                    build().toUri(), HttpMethod.GET,null,
+                    new ParameterizedTypeReference<List<Pet>>() {
             }).getBody();
         } catch (Exception e) {
             return Collections.emptyList();

@@ -24,6 +24,18 @@ public class Pet implements ValueObject {
         this.adoptions=0;
     }
 
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", petTypeName='" + petTypeName + '\'' +
+                ", petDescription='" + petDescription + '\'' +
+                ", petBreed='" + petBreed + '\'' +
+                ", adoptions=" + adoptions +
+                '}';
+    }
+
     @JsonCreator
     public Pet(@JsonProperty("id") PetId id,
                @JsonProperty("petName") String name,

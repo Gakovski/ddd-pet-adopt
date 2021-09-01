@@ -16,6 +16,6 @@ public class OrderServiceImplTests {
     @Test
     public void testPlaceOrderWithRealData(){
         List<Pet> petList = petClient.findAll();
-        System.out.println(petList);
+        System.out.println(petList.toString());
     }
 }
