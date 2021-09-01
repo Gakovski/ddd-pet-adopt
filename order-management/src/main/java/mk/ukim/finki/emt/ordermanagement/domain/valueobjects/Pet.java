@@ -1,6 +1,7 @@
 package mk.ukim.finki.emt.ordermanagement.domain.valueobjects;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import mk.ukim.finki.emt.sharedkernel.domain.base.ValueObject;
 
@@ -9,21 +10,32 @@ public class Pet implements ValueObject {
 
     private final PetId id;
     private final String name;
-    private final Type petType;
-    private final int quantity;
+    private final String petTypeName;
+    private final String petDescription;
+    private final String petBreed;
+    private final int adoptions;
 
     private Pet(){
         this.id=PetId.randomId(PetId.class);
         this.name= "";
-        this.petType= new Type();
-        this.quantity=0;
+        this.petTypeName="";
+        this.petDescription="";
+        this.petBreed="";
+        this.adoptions=0;
     }
 
     @JsonCreator
-    public Pet(PetId id, String name, Type petType, int quantity) {
+    public Pet(@JsonProperty("id") PetId id,
+               @JsonProperty("petName") String name,
+               @JsonProperty("petTypeName") String petTypeName,
+               @JsonProperty("petDescription") String petDescription,
+               @JsonProperty("petBreed") String petBreed,
+               @JsonProperty("adoptions") int adoptions) {
         this.id = id;
         this.name = name;
-        this.petType = petType;
-        this.quantity = quantity;
+        this.petTypeName = petTypeName;
+        this.petDescription = petDescription;
+        this.petBreed = petBreed;
+        this.adoptions = adoptions;
     }
 }

@@ -27,7 +27,11 @@ public class PetServiceImpl implements PetService {
 
     @Override
     public Pet createPet(PetForm form) {
-        Pet p = Pet.build(form.getPetName(), form.getPetType(), form.getAdoptions());
+        Pet p = Pet.build(form.getPetName(),
+                form.getPetTypeName(),
+                form.getPetDescription(),
+                form.getPetBreed(),
+                form.getAdoptions());
         petRepository.save(p);
         return p;
     }
