@@ -9,27 +9,14 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>mk.ukim.finki.emt</groupId>
-    <artifactId>order-management</artifactId>
+    <artifactId>adopter-management</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>order-management</name>
-    <description>order-management</description>
+    <name>adopter-management</name>
+    <description>adopter-management</description>
     <properties>
         <java.version>11</java.version>
     </properties>
     <dependencies>
-
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>6.0.13.Final</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -63,21 +50,6 @@
             <artifactId>shared-kernel</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
-        <dependency>
-            <groupId>mk.ukim.finki.emt</groupId>
-            <artifactId>pet-catalog</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>mk.ukim.finki.emt</groupId>
-            <artifactId>adopter-management</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-
     </dependencies>
 
     <build>

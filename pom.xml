@@ -19,6 +19,7 @@
         <module>shared-kernel</module>
         <module>pet-catalog</module>
         <module>order-management</module>
+        <module>adopter-management</module>
     </modules>
 
 </project>
