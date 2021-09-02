@@ -32,7 +32,7 @@ public class PetEventListener {
         try{
             OrderItemRemoved event = DomainEvent.fromJson(jsonMessage,
                     OrderItemRemoved.class);
-            petService.orderItemCreated(PetId.of(event.getPetId()), event.getQuantity());
+            petService.orderItemRemoved(PetId.of(event.getPetId()), event.getQuantity());
         } catch (Exception e){
 
         }
