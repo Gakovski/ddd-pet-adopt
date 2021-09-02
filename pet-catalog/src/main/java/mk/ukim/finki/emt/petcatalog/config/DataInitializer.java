@@ -17,7 +17,7 @@ public class DataInitializer {
     @PostConstruct
     public void initData(){
         Pet p1 = Pet.build("Jimi","Machka","Crna machka, 2 godini staro etc etc..","Test", 1);
-        Pet p2 = Pet.build("Bruno","Kuche","Kafeavo kuche, 6 meseci staro","Test2", 1);
+        Pet p2 = Pet.build("Bruno1","Kuche","Kafeavo kuche, 6 meseci staro","Test2", 1);
 
         if(petRepository.findAll().isEmpty()){
             petRepository.saveAll(Arrays.asList(p1,p2));
