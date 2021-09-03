@@ -5,8 +5,11 @@ import mk.ukim.finki.emt.ordermanagement.domain.exceptions.OrderIdNotExistExcept
 import mk.ukim.finki.emt.ordermanagement.domain.exceptions.OrderItemIdNotExistException;
 import mk.ukim.finki.emt.ordermanagement.domain.model.Order;
 import mk.ukim.finki.emt.ordermanagement.domain.model.OrderId;
+import mk.ukim.finki.emt.ordermanagement.domain.model.OrderItem;
 import mk.ukim.finki.emt.ordermanagement.domain.model.OrderItemId;
 import mk.ukim.finki.emt.ordermanagement.domain.repository.OrderRepository;
+import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.Adopter;
+import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.AdopterId;
 import mk.ukim.finki.emt.ordermanagement.service.OrderService;
 import mk.ukim.finki.emt.ordermanagement.service.forms.OrderForm;
 import mk.ukim.finki.emt.ordermanagement.service.forms.OrderItemForm;
@@ -46,7 +49,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private Order toDomainObject(OrderForm orderForm){
-        var order = new Order();
+//        Adopter a = new Adopter(orderForm.getAdopter().getId(),
+//                orderForm.getAdopter().getName(),
+//                orderForm.getAdopter().getSurname(),
+//                orderForm.getAdopter().getEmail(),
+//                orderForm.getAdopter().getPhone());
+//
+        var order = new Order(orderForm.getAdopter().getId());
         orderForm.getItems().forEach(item->order.addItem(item.getPet(),item.getQuantity()));
         return order;
     }

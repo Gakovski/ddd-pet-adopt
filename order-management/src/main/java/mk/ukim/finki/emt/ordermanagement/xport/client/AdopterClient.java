@@ -1,8 +1,6 @@
 package mk.ukim.finki.emt.ordermanagement.xport.client;
 
-
 import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.Adopter;
-import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.Pet;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -11,39 +9,35 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.Collections;
 import java.util.List;
 
 @Service
-public class PetClient {
+public class AdopterClient {
 
     private final RestTemplate restTemplate;
     private final String serverUrl;
 
-    public PetClient(@Value("${app.pet-catalog.url}") String serverUrl){
-        this.serverUrl = serverUrl;
-        this.restTemplate = new RestTemplate();
+    public AdopterClient(@Value("http://localhost:9093") String serverUrl){
+        this.serverUrl=serverUrl;
+        this.restTemplate=new RestTemplate();
         var requestFactory = new SimpleClientHttpRequestFactory();
         this.restTemplate.setRequestFactory(requestFactory);
     }
 
-    private UriComponentsBuilder uri() {
+    private UriComponentsBuilder uri(){
         return UriComponentsBuilder.fromUriString(this.serverUrl);
     }
 
-    public List<Pet> findAll(){
+    public List<Adopter> findAllAdopters(){
         try {
-            return restTemplate.exchange(uri().path("/api/pet").
-                    build().toUri(), HttpMethod.GET,null,
-                    new ParameterizedTypeReference<List<Pet>>() {
-            }).getBody();
+            return restTemplate.exchange(uri().path("/api/adopter").
+                            build().toUri(), HttpMethod.GET,null,
+                    new ParameterizedTypeReference<List<Adopter>>() {
+                    }).getBody();
         } catch (Exception e) {
             return Collections.emptyList();
         }
 
     }
-
-
-
 }

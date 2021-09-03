@@ -20,7 +20,8 @@ public class OrderItem extends AbstractEntity<OrderItemId> {
     @Column(name = "qty", nullable = false)
     private int quantity;
 
-    @AttributeOverride(name="id",column = @Column(name = "pet_id",nullable = false))
+    @AttributeOverride(name="id",
+            column = @Column(name = "pet_id",nullable = false))
     private PetId petId;
 
     private OrderItem(){

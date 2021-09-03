@@ -2,6 +2,7 @@ package mk.ukim.finki.emt.ordermanagement.domain.model;
 
 import lombok.Getter;
 import lombok.NonNull;
+import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.AdopterId;
 import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.Pet;
 import mk.ukim.finki.emt.sharedkernel.domain.base.AbstractEntity;
 
@@ -19,14 +20,26 @@ public class Order extends AbstractEntity<OrderId> {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<OrderItem> orderItemList;
 
+    private OrderItemId orderItemId;
+
+    @AttributeOverride(name="id",
+            column = @Column(name = "adopter_id", nullable = false))
+    private AdopterId adopterId;
+//
 //    private Order(){
 //        super(OrderId.randomId(OrderId.class));
 //    }
 
-    //Implement isApproved nekad
-    public Order(){
+    public Order(@NonNull AdopterId adopterId) {
         super(OrderId.randomId(OrderId.class));
+        this.adopterId = adopterId;
+        //this.orderItemId = orderItemId;
     }
+
+    //Implement isApproved nekad
+//    public Order(){
+//        super(OrderId.randomId(OrderId.class));
+//    }
 
     public OrderItem addItem(@NonNull Pet pet, int qty){
         Objects.requireNonNull(pet, "Pet must not be null.");
