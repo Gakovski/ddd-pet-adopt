@@ -2,6 +2,7 @@ package mk.ukim.finki.emt.ordermanagement.xport.rest;
 
 import lombok.AllArgsConstructor;
 import mk.ukim.finki.emt.ordermanagement.domain.model.Order;
+import mk.ukim.finki.emt.ordermanagement.domain.model.OrderId;
 import mk.ukim.finki.emt.ordermanagement.service.OrderService;
 import mk.ukim.finki.emt.ordermanagement.service.forms.OrderForm;
 import mk.ukim.finki.emt.petcatalog.services.forms.PetForm;
@@ -26,4 +27,8 @@ public class OrderResource {
         orderService.placeOrder(orderForm);
     }
 
+    @DeleteMapping(path = "{orderId}")
+    public void deleteOrder (@PathVariable("orderId")OrderId orderId){
+        orderService.deleteOrder(orderId);
+    }
 }

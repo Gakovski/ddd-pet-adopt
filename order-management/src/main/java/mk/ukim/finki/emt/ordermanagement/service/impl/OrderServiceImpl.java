@@ -1,9 +1,11 @@
 package mk.ukim.finki.emt.ordermanagement.service.impl;
 
 import lombok.AllArgsConstructor;
+import mk.ukim.finki.emt.ordermanagement.domain.exceptions.OrderIdNotExistException;
 import mk.ukim.finki.emt.ordermanagement.domain.model.Order;
 import mk.ukim.finki.emt.ordermanagement.domain.model.OrderId;
 import mk.ukim.finki.emt.ordermanagement.domain.repository.OrderRepository;
+import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.Adopter;
 import mk.ukim.finki.emt.ordermanagement.service.OrderService;
 import mk.ukim.finki.emt.ordermanagement.service.forms.OrderForm;
 import mk.ukim.finki.emt.sharedkernel.infra.DomainEventPublisher;
@@ -38,6 +40,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private Order toDomainObject(OrderForm orderForm){
+
         var order = new Order(orderForm.getAdopterId(), orderForm.getPetId());
         return order;
     }
@@ -45,6 +48,15 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> findAll() {
         return orderRepository.findAll();
+    }
+
+    @Override
+    public void deleteOrder(OrderId orderId) {
+        boolean exists = orderRepository.existsById(orderId);
+        if(!exists){
+            throw new IllegalStateException("Order do not exist");
+        }
+        orderRepository.deleteById(orderId);
     }
 
 }

@@ -2,6 +2,7 @@ package mk.ukim.finki.emt.adoptermanagement.xport.rest;
 
 import lombok.AllArgsConstructor;
 import mk.ukim.finki.emt.adoptermanagement.domain.models.Adopter;
+import mk.ukim.finki.emt.adoptermanagement.domain.models.AdopterId;
 import mk.ukim.finki.emt.adoptermanagement.services.AdopterService;
 import mk.ukim.finki.emt.adoptermanagement.services.forms.AdopterForm;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,11 @@ public class AdopterResource {
     @PostMapping
     public void addNewAdopter(@RequestBody AdopterForm adopterForm){
         adopterService.creteAdopter(adopterForm);
+    }
+
+    @DeleteMapping(path = "{adopterId}")
+    public void deleteAdopter(@PathVariable("adopterId") AdopterId adopterId){
+        adopterService.deleteAdopter(adopterId);
     }
 
 }

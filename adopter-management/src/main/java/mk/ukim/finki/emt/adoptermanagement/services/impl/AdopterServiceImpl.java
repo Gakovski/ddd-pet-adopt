@@ -2,6 +2,7 @@ package mk.ukim.finki.emt.adoptermanagement.services.impl;
 
 import lombok.AllArgsConstructor;
 import mk.ukim.finki.emt.adoptermanagement.domain.models.Adopter;
+import mk.ukim.finki.emt.adoptermanagement.domain.models.AdopterId;
 import mk.ukim.finki.emt.adoptermanagement.domain.repository.AdopterRepository;
 import mk.ukim.finki.emt.adoptermanagement.services.AdopterService;
 import mk.ukim.finki.emt.adoptermanagement.services.forms.AdopterForm;
@@ -26,6 +27,16 @@ public class AdopterServiceImpl implements AdopterService {
                                         form.getPhone());
         adopterRepository.save(adopter);
         return adopter;
+    }
+
+    @Override
+    public void deleteAdopter(AdopterId adopterId) {
+        boolean exists = adopterRepository.existsById(adopterId);
+        if(!exists){
+            throw new IllegalStateException("Adopter not exist");
+        }
+        adopterRepository.deleteById(adopterId);
+
     }
 
     @Override
