@@ -14,29 +14,28 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class PetEventListener {
 
-    private final PetService petService;
-
-    @KafkaListener(topics= TopicHolder.TOPIC_ORDER_ITEM_CREATED, groupId = "petCatalog")
-    public void consumeOrderItemCreatedEvent(String jsonMessage){
-        try{
-            OrderItemCreated event = DomainEvent.fromJson(jsonMessage,
-                    OrderItemCreated.class);
-            petService.orderItemCreated(PetId.of(event.getPetId()), event.getQuantity());
-        } catch (Exception e){
-
-        }
-    }
-
-    @KafkaListener(topics= TopicHolder.TOPIC_ORDER_ITEM_REMOVED, groupId = "petCatalog")
-    public void consumeOrderItemRemovedEvent(String jsonMessage){
-        try{
-            OrderItemRemoved event = DomainEvent.fromJson(jsonMessage,
-                    OrderItemRemoved.class);
-            petService.orderItemRemoved(PetId.of(event.getPetId()), event.getQuantity());
-        } catch (Exception e){
-
-        }
-    }
+//    private final PetService petService;
+//    @KafkaListener(topics= TopicHolder.TOPIC_ORDER_ITEM_CREATED, groupId = "petCatalog")
+//    public void consumeOrderItemCreatedEvent(String jsonMessage){
+//        try{
+//            OrderItemCreated event = DomainEvent.fromJson(jsonMessage,
+//                    OrderItemCreated.class);
+//            petService.orderItemCreated(PetId.of(event.getPetId()), event.getQuantity());
+//        } catch (Exception e){
+//
+//        }
+//    }
+//
+//    @KafkaListener(topics= TopicHolder.TOPIC_ORDER_ITEM_REMOVED, groupId = "petCatalog")
+//    public void consumeOrderItemRemovedEvent(String jsonMessage){
+//        try{
+//            OrderItemRemoved event = DomainEvent.fromJson(jsonMessage,
+//                    OrderItemRemoved.class);
+//            petService.orderItemRemoved(PetId.of(event.getPetId()), event.getQuantity());
+//        } catch (Exception e){
+//
+//        }
+//    }
 
 
 }

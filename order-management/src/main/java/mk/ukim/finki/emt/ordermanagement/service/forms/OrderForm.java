@@ -1,21 +1,22 @@
 package mk.ukim.finki.emt.ordermanagement.service.forms;
 
 import lombok.Data;
-import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.Adopter;
+import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.AdopterId;
+import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.PetId;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 public class OrderForm {
 
     @NotNull
-    private Adopter adopter;
+    private AdopterId adopterId;
 
-    @Valid
-    @NotEmpty
-    private List<OrderItemForm> items = new ArrayList<>();
+    @NotNull
+    private PetId petId;
+
+    //
+//    @Valid
+//    @NotEmpty
+//    private OrderItemId orderItemId;
 }
