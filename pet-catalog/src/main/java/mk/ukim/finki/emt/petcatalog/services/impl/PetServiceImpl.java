@@ -36,21 +36,15 @@ public class PetServiceImpl implements PetService {
         return p;
     }
 
-//    @Override
-//    public Pet orderItemCreated(PetId petId, int quantity) {
-//        Pet p = petRepository.findById(petId).orElseThrow(PetNotFoundException::new);
-//        p.addAdoptions(quantity);
-//        petRepository.saveAndFlush(p);
-//        return p;
-//    }
-//
-//    @Override
-//    public Pet orderItemRemoved(PetId petId, int quantity) {
-//        Pet p = petRepository.findById(petId).orElseThrow(PetNotFoundException::new);
-//        p.removeAdoptions(quantity);
-//        petRepository.saveAndFlush(p);
-//        return p;
-//    }
+    @Override
+    public void deletePet(PetId petId) {
+        petRepository.deleteById(petId);
+    }
+
+    @Override
+    public void deletePetAfterOrder(PetId petId) {
+        petRepository.deleteById(petId);
+    }
 
     @Override
     public List<Pet> getAll() {

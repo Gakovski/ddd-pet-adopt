@@ -10,8 +10,8 @@ public interface PetService {
 
     Pet findById(PetId id);
     Pet createPet(PetForm form);
-//    Pet orderItemCreated(PetId petId, int quantity);
-//    Pet orderItemRemoved(PetId petId, int quantity);
+    void deletePet(PetId petId);
+    void deletePetAfterOrder(PetId petId);
     List<Pet> getAll();
 
 }

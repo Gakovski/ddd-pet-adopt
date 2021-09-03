@@ -15,7 +15,6 @@ import java.util.List;
 public class OrderResource {
 
     private final OrderService orderService;
-    //private final PetRepository petRepository;
 
     @GetMapping
     public List<Order> getAll(){
@@ -30,6 +29,5 @@ public class OrderResource {
     @DeleteMapping(path = "{orderId}")
     public void deleteOrder (@PathVariable("orderId")OrderId orderId){
         orderService.deleteOrder(orderId);
-
     }
 }

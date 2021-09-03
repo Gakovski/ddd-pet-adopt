@@ -2,10 +2,12 @@ package mk.ukim.finki.emt.petcatalog.xport.rest;
 
 import lombok.AllArgsConstructor;
 import mk.ukim.finki.emt.petcatalog.domain.models.Pet;
+import mk.ukim.finki.emt.petcatalog.domain.models.PetId;
 import mk.ukim.finki.emt.petcatalog.services.PetService;
 import mk.ukim.finki.emt.petcatalog.services.forms.PetForm;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.util.List;
 
 @RestController
@@ -23,6 +25,11 @@ public class PetResource {
     @PostMapping
     public void addNewPet (@RequestBody PetForm petForm){
         petService.createPet(petForm);
+    }
+
+    @DeleteMapping(path = "{petId}")
+    public void deletePet (@PathVariable("petId") PetId petId){
+        petService.deletePet(petId);
     }
 
 }
