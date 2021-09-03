@@ -1,17 +1,12 @@
 package mk.ukim.finki.emt.ordermanagement.service.impl;
 
 import lombok.AllArgsConstructor;
-import mk.ukim.finki.emt.ordermanagement.domain.exceptions.OrderIdNotExistException;
 import mk.ukim.finki.emt.ordermanagement.domain.model.Order;
 import mk.ukim.finki.emt.ordermanagement.domain.model.OrderId;
 import mk.ukim.finki.emt.ordermanagement.domain.repository.OrderRepository;
-import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.Adopter;
 import mk.ukim.finki.emt.ordermanagement.service.OrderService;
 import mk.ukim.finki.emt.ordermanagement.service.forms.OrderForm;
-import mk.ukim.finki.emt.petcatalog.domain.models.Pet;
-import mk.ukim.finki.emt.petcatalog.domain.models.PetId;
-import mk.ukim.finki.emt.petcatalog.domain.repository.PetRepository;
-import mk.ukim.finki.emt.sharedkernel.infra.DomainEventPublisher;
+
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -28,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     //private final DomainEventPublisher domainEventPublisher;
     private final Validator validator;
-    private final PetRepository petRepository;
+//    private final PetRepository petRepository;
 
     @Override
     public List<Order> findAll() {
@@ -50,9 +45,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private Order toDomainObject(OrderForm orderForm){
-
-        var order = new Order(orderForm.getAdopterId(), orderForm.getPetId());
-        return order;
+        return new Order(orderForm.getAdopterId(), orderForm.getPetId());
     }
 
     @Override

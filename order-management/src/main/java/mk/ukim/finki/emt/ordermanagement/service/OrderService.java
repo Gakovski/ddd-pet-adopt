@@ -3,7 +3,6 @@ package mk.ukim.finki.emt.ordermanagement.service;
 import mk.ukim.finki.emt.ordermanagement.domain.model.Order;
 import mk.ukim.finki.emt.ordermanagement.domain.model.OrderId;
 import mk.ukim.finki.emt.ordermanagement.service.forms.OrderForm;
-import mk.ukim.finki.emt.petcatalog.domain.models.PetId;
 
 import java.util.List;
 
