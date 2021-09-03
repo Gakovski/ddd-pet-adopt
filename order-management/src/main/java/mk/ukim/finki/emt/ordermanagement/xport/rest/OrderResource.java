@@ -5,6 +5,9 @@ import mk.ukim.finki.emt.ordermanagement.domain.model.Order;
 import mk.ukim.finki.emt.ordermanagement.domain.model.OrderId;
 import mk.ukim.finki.emt.ordermanagement.service.OrderService;
 import mk.ukim.finki.emt.ordermanagement.service.forms.OrderForm;
+import mk.ukim.finki.emt.petcatalog.domain.models.Pet;
+import mk.ukim.finki.emt.petcatalog.domain.models.PetId;
+import mk.ukim.finki.emt.petcatalog.domain.repository.PetRepository;
 import mk.ukim.finki.emt.petcatalog.services.forms.PetForm;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +19,7 @@ import java.util.List;
 public class OrderResource {
 
     private final OrderService orderService;
+    private final PetRepository petRepository;
 
     @GetMapping
     public List<Order> getAll(){
@@ -30,5 +34,6 @@ public class OrderResource {
     @DeleteMapping(path = "{orderId}")
     public void deleteOrder (@PathVariable("orderId")OrderId orderId){
         orderService.deleteOrder(orderId);
+
     }
 }

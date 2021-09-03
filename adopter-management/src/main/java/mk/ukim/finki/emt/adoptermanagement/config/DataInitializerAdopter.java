@@ -11,17 +11,17 @@ import javax.annotation.PostConstruct;
 @AllArgsConstructor
 public class DataInitializerAdopter {
 
-    private final AdopterRepository adopterRepository;
-
-    @PostConstruct
-    public void initData(){
-        Adopter a1 = Adopter.build("David",
-                                 "Gakovski",
-                                   "david123@gmail.com",
-                                  "070123456");
-        if(adopterRepository.findAll().isEmpty()){
-            adopterRepository.save(a1);
-        }
-    }
+//    private final AdopterRepository adopterRepository;
+//
+//    @PostConstruct
+//    public void initData(){
+//        Adopter a1 = Adopter.build("David",
+//                                 "Gakovski",
+//                                   "david123@gmail.com",
+//                                  "070123456");
+//        if(adopterRepository.findAll().isEmpty()){
+//            adopterRepository.save(a1);
+//        }
+//    }
 
 }

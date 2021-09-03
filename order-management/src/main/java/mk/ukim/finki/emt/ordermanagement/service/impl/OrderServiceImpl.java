@@ -8,6 +8,9 @@ import mk.ukim.finki.emt.ordermanagement.domain.repository.OrderRepository;
 import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.Adopter;
 import mk.ukim.finki.emt.ordermanagement.service.OrderService;
 import mk.ukim.finki.emt.ordermanagement.service.forms.OrderForm;
+import mk.ukim.finki.emt.petcatalog.domain.models.Pet;
+import mk.ukim.finki.emt.petcatalog.domain.models.PetId;
+import mk.ukim.finki.emt.petcatalog.domain.repository.PetRepository;
 import mk.ukim.finki.emt.sharedkernel.infra.DomainEventPublisher;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +26,14 @@ import java.util.Objects;
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
-    private final DomainEventPublisher domainEventPublisher;
+    //private final DomainEventPublisher domainEventPublisher;
     private final Validator validator;
+    private final PetRepository petRepository;
+
+    @Override
+    public List<Order> findAll() {
+        return orderRepository.findAll();
+    }
 
     @Override
     public OrderId placeOrder(OrderForm orderForm) {
@@ -36,6 +45,7 @@ public class OrderServiceImpl implements OrderService {
         }
         var newOrder = orderRepository.saveAndFlush(toDomainObject(orderForm));
 
+
         return newOrder.getId();
     }
 
@@ -43,11 +53,6 @@ public class OrderServiceImpl implements OrderService {
 
         var order = new Order(orderForm.getAdopterId(), orderForm.getPetId());
         return order;
-    }
-
-    @Override
-    public List<Order> findAll() {
-        return orderRepository.findAll();
     }
 
     @Override

@@ -18,7 +18,7 @@ public class Pet extends AbstractEntity<PetId> {
     private String petBreed;
     private int adoptions;
 
-    private Pet(){
+    public Pet(){
         super(PetId.randomId(PetId.class));
     }
 

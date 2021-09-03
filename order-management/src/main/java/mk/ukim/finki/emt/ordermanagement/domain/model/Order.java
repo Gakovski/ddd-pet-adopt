@@ -14,6 +14,8 @@ import javax.persistence.*;
 @Getter
 public class Order extends AbstractEntity<OrderId> {
 
+    public final boolean isApproved = false;
+
     @AttributeOverride(name="id",
             column = @Column(name = "adopter_id", nullable = false))
     private AdopterId adopterId;
