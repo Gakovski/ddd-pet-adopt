@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.AdopterId;
 import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.Pet;
+import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.PetId;
 import mk.ukim.finki.emt.sharedkernel.domain.base.AbstractEntity;
 
 import javax.persistence.*;
@@ -15,42 +16,22 @@ import java.util.Set;
 @Getter
 public class Order extends AbstractEntity<OrderId> {
 
-    private boolean isApproved;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private Set<OrderItem> orderItemList;
-
-    private OrderItemId orderItemId;
-
     @AttributeOverride(name="id",
             column = @Column(name = "adopter_id", nullable = false))
     private AdopterId adopterId;
-//
-//    private Order(){
-//        super(OrderId.randomId(OrderId.class));
-//    }
 
-    public Order(@NonNull AdopterId adopterId) {
+    @AttributeOverride(name="id",
+            column = @Column(name = "pet_id",nullable = false))
+    private PetId petId;
+
+    private Order(){
+        super(OrderId.randomId(OrderId.class));
+    }
+
+    public Order(@NonNull AdopterId adopterId, PetId petId) {
         super(OrderId.randomId(OrderId.class));
         this.adopterId = adopterId;
-        //this.orderItemId = orderItemId;
+        this.petId = petId;
     }
 
-    //Implement isApproved nekad
-//    public Order(){
-//        super(OrderId.randomId(OrderId.class));
-//    }
-
-    public OrderItem addItem(@NonNull Pet pet, int qty){
-        Objects.requireNonNull(pet, "Pet must not be null.");
-        var item = new OrderItem(pet.getId(), qty);
-        orderItemList.add(item);
-        return item;
-    }
-
-    public void removeItem(@NonNull OrderItemId orderItemId){
-        //Implement isApproved nekogash ovde
-        Objects.requireNonNull(orderItemId, "Order Item must not be null.");
-        orderItemList.removeIf(v->v.getId().equals(orderItemId));
-    }
 }

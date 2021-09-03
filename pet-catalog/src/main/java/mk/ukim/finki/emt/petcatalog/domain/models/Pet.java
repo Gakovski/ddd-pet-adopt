@@ -3,7 +3,6 @@ package mk.ukim.finki.emt.petcatalog.domain.models;
 
 
 import lombok.Getter;
-import mk.ukim.finki.emt.petcatalog.domain.valueobjects.Quantity;
 import mk.ukim.finki.emt.sharedkernel.domain.base.AbstractEntity;
 
 import javax.persistence.*;
