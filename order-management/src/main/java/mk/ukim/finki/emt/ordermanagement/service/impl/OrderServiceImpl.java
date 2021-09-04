@@ -71,10 +71,10 @@ public class OrderServiceImpl implements OrderService {
 
         List<Order> orderList = orderRepository.findAll();
 
-        for (int i = 0; i < orderList.size(); i++) {
-            Order orderToBeDeleted = orderList.get(i);
-            if (!orderToBeDeleted.isApproved() && orderToBeDeleted.getPetId().equals(order.getPetId()))
-                deleteOrder(orderToBeDeleted.getId());
+        for (Order orderToBeDeleted : orderList) {
+            if (!orderToBeDeleted.isApproved() && orderToBeDeleted.getPetId().getId().equals(order.getPetId().getId())){
+                orderRepository.deleteById(orderToBeDeleted.getId());
+            }
         }
 
     }
