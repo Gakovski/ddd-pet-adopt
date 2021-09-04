@@ -23,7 +23,7 @@ public class PetEventListener {
     public void consumeOrderApproved(@Payload(required = false) String jsonMessage){
         try{
             OrderApproved event = DomainEvent.fromJson(jsonMessage, OrderApproved.class);
-            petService.updatePet(PetId.of(event.getPetId()));
+            petService.updatePet(event.getPetId());
         } catch (Exception e){
 
         }

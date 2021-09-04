@@ -13,7 +13,7 @@ public class Pet implements ValueObject {
     private final String petTypeName;
     private final String petDescription;
     private final String petBreed;
-    private final Boolean isAdopted;
+    private Boolean isAdopted;
 
     private Pet(){
         this.id=PetId.randomId(PetId.class);
@@ -50,4 +50,9 @@ public class Pet implements ValueObject {
         this.petBreed = petBreed;
         this.isAdopted = false;
     }
+
+    public void addAdoptions(){
+        this.isAdopted = true;
+    }
+
 }

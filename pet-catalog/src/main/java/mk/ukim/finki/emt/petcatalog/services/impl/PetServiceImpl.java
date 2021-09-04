@@ -43,8 +43,8 @@ public class PetServiceImpl implements PetService {
 
     @Override
     @Transactional
-    public void updatePet(PetId petId) {
-        Pet pet = petRepository.getById(petId);
+    public void updatePet(String petId) {
+        Pet pet = petRepository.getById(PetId.of(petId));
         pet.addAdoptions();
     }
 

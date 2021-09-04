@@ -52,6 +52,7 @@ public class OrderServiceImpl implements OrderService {
             Optional<Adopter> adopter = adopterClient.findById(order.getAdopterId().getId());
             adopter.ifPresent(dto::setAdopter);
             dto.setOrderId(order.getId());
+            dto.setIsApproved(order.isApproved());
             orderList.add(dto);
         }
         return orderList;
@@ -101,10 +102,9 @@ public class OrderServiceImpl implements OrderService {
 
         //otkakko kje gi izbrisheme site false orders
         //treba da go smenime statusot na posvoenoto mileniche od false vo true(adopted = true)
-        domainEventPublisher.publish(new OrderApproved(order.getPetId().getId()));
-
-
-
+        //domainEventPublisher.publish(new OrderApproved(order.getPetId().getId()));
+        Pet byId = petClient.findById(order.getPetId().getId()).orElseThrow(PetNotFoundException::new);
+        byId.addAdoptions();
     }
 
 }

@@ -11,7 +11,7 @@ public interface PetService {
     Pet findById(String id);
     Pet createPet(PetForm form);
     void deletePet(PetId petId);
-    void updatePet(PetId petId);
+    void updatePet(String petId);
     List<Pet> getAll();
 
 }

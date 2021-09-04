@@ -38,7 +38,8 @@ public class PetResource {
     }
 
     @PutMapping(path = "updatePet/{petId}")
-    public void updatePet (@PathVariable("petId") PetId petId){
+    public void updatePet (@PathVariable("petId") String petId,
+                           @RequestBody Pet pet){
         petService.updatePet(petId);
     }
 }

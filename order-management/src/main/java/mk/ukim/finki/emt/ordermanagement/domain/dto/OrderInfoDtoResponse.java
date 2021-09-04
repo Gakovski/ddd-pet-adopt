@@ -10,6 +10,7 @@ import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.PetId;
 @Data
 public class OrderInfoDtoResponse {
     OrderId orderId;
+    Boolean isApproved;
     Pet pet;
     Adopter adopter;
 
