@@ -30,8 +30,7 @@ public class PetServiceImpl implements PetService {
         Pet p = Pet.build(form.getPetName(),
                 form.getPetTypeName(),
                 form.getPetDescription(),
-                form.getPetBreed(),
-                form.getAdoptions());
+                form.getPetBreed());
         petRepository.save(p);
         return p;
     }
@@ -41,10 +40,6 @@ public class PetServiceImpl implements PetService {
         petRepository.deleteById(petId);
     }
 
-    @Override
-    public void deletePetAfterOrder(PetId petId) {
-        petRepository.deleteById(petId);
-    }
 
     @Override
     public List<Pet> getAll() {

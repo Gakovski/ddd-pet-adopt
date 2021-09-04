@@ -30,4 +30,9 @@ public class OrderResource {
     public void deleteOrder (@PathVariable("orderId")OrderId orderId){
         orderService.deleteOrder(orderId);
     }
+
+    @PutMapping(path = "/approve/{orderId}")
+    public void approveOrder(@PathVariable("orderId")OrderId orderId){
+        orderService.approveOrder(orderId);
+    }
 }

@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Getter
 public class Order extends AbstractEntity<OrderId> {
 
-    private final boolean isApproved = false;
+    private boolean isApproved;
 
     @AttributeOverride(name="id",
             column = @Column(name = "adopter_id", nullable = false))
@@ -23,14 +23,19 @@ public class Order extends AbstractEntity<OrderId> {
             column = @Column(name = "pet_id",nullable = false))
     private PetId petId;
 
-    private Order(){
+    public Order(){
         super(OrderId.randomId(OrderId.class));
     }
 
-    public Order(@NonNull AdopterId adopterId, PetId petId) {
+    public Order(@NonNull AdopterId adopterId, PetId petId, boolean isApproved) {
         super(OrderId.randomId(OrderId.class));
         this.adopterId = adopterId;
         this.petId = petId;
+        this.isApproved = false;
+    }
+
+    public void approveOrder(){
+        this.isApproved = true;
     }
 
 }

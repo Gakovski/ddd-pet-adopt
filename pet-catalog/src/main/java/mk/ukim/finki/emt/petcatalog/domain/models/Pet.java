@@ -16,7 +16,7 @@ public class Pet extends AbstractEntity<PetId> {
     private String petTypeName;
     private String petDescription;
     private String petBreed;
-    private int adoptions;
+    private boolean isAdopted;
 
     public Pet(){
         super(PetId.randomId(PetId.class));
@@ -25,23 +25,19 @@ public class Pet extends AbstractEntity<PetId> {
     public static Pet build(String petName,
                             String petTypeName,
                             String petDescription,
-                            String petBreed,
-                            int adoptions){
+                            String petBreed){
         Pet p = new Pet();
         p.petName = petName;
         p.petTypeName = petTypeName;
         p.petDescription = petDescription;
         p.petBreed = petBreed;
-        p.adoptions = adoptions;
+        p.isAdopted = false;
         return p;
     }
 
-    public void addAdoptions(int qty){
-        this.adoptions = this.adoptions - qty;
+    public void addAdoptions(){
+        this.isAdopted = true;
     }
 
-    public void removeAdoptions(int qty){
-        this.adoptions = this.adoptions - qty;
-    }
 
 }
