@@ -102,9 +102,9 @@ public class OrderServiceImpl implements OrderService {
 
         //otkakko kje gi izbrisheme site false orders
         //treba da go smenime statusot na posvoenoto mileniche od false vo true(adopted = true)
-        //domainEventPublisher.publish(new OrderApproved(order.getPetId().getId()));
-        Pet byId = petClient.findById(order.getPetId().getId()).orElseThrow(PetNotFoundException::new);
-        byId.addAdoptions();
+        domainEventPublisher.publish(new OrderApproved("e49b4057-582b-42fa-beed-e3b9e6811cdc"));
+//        Pet byId = petClient.findById(order.getPetId().getId()).orElseThrow(PetNotFoundException::new);
+//        byId.addAdoptions();
     }
 
 }

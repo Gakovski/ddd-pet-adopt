@@ -8,7 +8,6 @@ import mk.ukim.finki.emt.sharedkernel.domain.config.TopicHolder;
 import mk.ukim.finki.emt.sharedkernel.domain.events.DomainEvent;
 
 import mk.ukim.finki.emt.sharedkernel.domain.events.orders.OrderApproved;
-import org.apache.kafka.common.internals.Topic;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ public class PetEventListener {
     public void consumeOrderApproved(@Payload(required = false) String jsonMessage){
         try{
             OrderApproved event = DomainEvent.fromJson(jsonMessage, OrderApproved.class);
-            petService.updatePet(event.getPetId());
+            petService.updatePet(event.getOrderId());
         } catch (Exception e){
 
         }

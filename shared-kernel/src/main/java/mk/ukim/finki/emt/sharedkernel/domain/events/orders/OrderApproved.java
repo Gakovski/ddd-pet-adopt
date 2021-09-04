@@ -7,14 +7,14 @@ import mk.ukim.finki.emt.sharedkernel.domain.events.DomainEvent;
 @Getter
 public class OrderApproved extends DomainEvent {
 
-    private final String petId;
+    private final String orderId;
 
 //    private OrderApproved(String topic){
 //        super(TopicHolder.TOPIC_ORDER_APPROVED);
 //    }
 
-    public OrderApproved(String petId){
+    public OrderApproved(String orderId){
         super(TopicHolder.TOPIC_ORDER_APPROVED);
-        this.petId=petId;
+        this.orderId=orderId;
     }
 }

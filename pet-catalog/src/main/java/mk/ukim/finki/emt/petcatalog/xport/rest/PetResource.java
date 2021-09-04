@@ -7,7 +7,6 @@ import mk.ukim.finki.emt.petcatalog.services.PetService;
 import mk.ukim.finki.emt.petcatalog.services.forms.PetForm;
 import org.springframework.web.bind.annotation.*;
 
-import java.nio.file.Path;
 import java.util.List;
 
 @RestController
