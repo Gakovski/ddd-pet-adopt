@@ -1,6 +1,7 @@
 package mk.ukim.finki.emt.ordermanagement.xport.rest;
 
 import lombok.AllArgsConstructor;
+import mk.ukim.finki.emt.ordermanagement.domain.dto.OrderInfoDtoResponse;
 import mk.ukim.finki.emt.ordermanagement.domain.model.Order;
 import mk.ukim.finki.emt.ordermanagement.domain.model.OrderId;
 import mk.ukim.finki.emt.ordermanagement.service.OrderService;
@@ -17,13 +18,13 @@ public class OrderResource {
     private final OrderService orderService;
 
     @GetMapping
-    public List<Order> getAll(){
+    public List<OrderInfoDtoResponse> getAll(){
         return orderService.findAll();
     }
 
     @PostMapping
-    public void placeOrder (@RequestBody OrderForm orderForm){
-        orderService.placeOrder(orderForm);
+    public Order placeOrder (@RequestBody OrderForm orderForm){
+       return orderService.placeOrder(orderForm);
     }
 
     @DeleteMapping(path = "{orderId}")

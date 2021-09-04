@@ -1,6 +1,7 @@
 package mk.ukim.finki.emt.ordermanagement.xport.client;
 
 import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.Adopter;
+import mk.ukim.finki.emt.ordermanagement.domain.valueobjects.Pet;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -11,6 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdopterClient {
@@ -40,4 +42,17 @@ public class AdopterClient {
         }
 
     }
+
+    public Optional<Adopter> findById(String adopterId){
+        try {
+            return restTemplate.exchange(uri().path("/api/adopter/"+adopterId).
+                            build().toUri(), HttpMethod.GET,null,
+                    new ParameterizedTypeReference<Optional<Adopter>>() {
+                    }).getBody();
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+    }
+
+
 }

@@ -21,8 +21,9 @@ public class PetServiceImpl implements PetService {
 
 
     @Override
-    public Pet findById(PetId id) {
-        return petRepository.findById(id).orElseThrow(PetNotFoundException::new);
+    public Pet findById(String id) {
+        PetId petId = new PetId(id);
+        return petRepository.findById(petId).orElseThrow(PetNotFoundException::new);
     }
 
     @Override
@@ -38,6 +39,13 @@ public class PetServiceImpl implements PetService {
     @Override
     public void deletePet(PetId petId) {
         petRepository.deleteById(petId);
+    }
+
+    @Override
+    @Transactional
+    public void updatePet(PetId petId) {
+        Pet pet = petRepository.getById(petId);
+        pet.addAdoptions();
     }
 
 

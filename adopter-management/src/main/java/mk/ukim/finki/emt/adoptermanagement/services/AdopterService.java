@@ -11,4 +11,6 @@ public interface AdopterService {
     Adopter creteAdopter(AdopterForm form);
     void deleteAdopter(AdopterId adopterId);
     List<Adopter> getAll();
+    Adopter findById(String id);
+
 }

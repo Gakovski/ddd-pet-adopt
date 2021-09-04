@@ -8,9 +8,10 @@ import java.util.List;
 
 public interface PetService {
 
-    Pet findById(PetId id);
+    Pet findById(String id);
     Pet createPet(PetForm form);
     void deletePet(PetId petId);
+    void updatePet(PetId petId);
     List<Pet> getAll();
 
 }

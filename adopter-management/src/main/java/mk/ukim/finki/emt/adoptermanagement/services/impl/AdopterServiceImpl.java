@@ -1,6 +1,7 @@
 package mk.ukim.finki.emt.adoptermanagement.services.impl;
 
 import lombok.AllArgsConstructor;
+import mk.ukim.finki.emt.adoptermanagement.domain.exceptions.AdopterNotFoundException;
 import mk.ukim.finki.emt.adoptermanagement.domain.models.Adopter;
 import mk.ukim.finki.emt.adoptermanagement.domain.models.AdopterId;
 import mk.ukim.finki.emt.adoptermanagement.domain.repository.AdopterRepository;
@@ -42,5 +43,11 @@ public class AdopterServiceImpl implements AdopterService {
     @Override
     public List<Adopter> getAll() {
         return adopterRepository.findAll();
+    }
+
+    @Override
+    public Adopter findById(String id) {
+        AdopterId adopterId = new AdopterId(id);
+        return adopterRepository.findById(adopterId).orElseThrow(AdopterNotFoundException::new);
     }
 }

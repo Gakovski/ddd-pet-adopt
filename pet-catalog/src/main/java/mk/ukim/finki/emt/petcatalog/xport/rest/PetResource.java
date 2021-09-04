@@ -22,6 +22,11 @@ public class PetResource {
         return petService.getAll();
     }
 
+    @GetMapping(path = "{petId}")
+    public Pet getById(@PathVariable("petId") String petId){
+        return petService.findById(petId);
+    }
+
     @PostMapping
     public void addNewPet (@RequestBody PetForm petForm){
         petService.createPet(petForm);
@@ -32,4 +37,8 @@ public class PetResource {
         petService.deletePet(petId);
     }
 
+    @PutMapping(path = "updatePet/{petId}")
+    public void updatePet (@PathVariable("petId") PetId petId){
+        petService.updatePet(petId);
+    }
 }

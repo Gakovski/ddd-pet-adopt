@@ -16,7 +16,7 @@ public class Pet extends AbstractEntity<PetId> {
     private String petTypeName;
     private String petDescription;
     private String petBreed;
-    private boolean isAdopted;
+    private Boolean isAdopted;
 
     public Pet(){
         super(PetId.randomId(PetId.class));

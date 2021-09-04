@@ -21,6 +21,11 @@ public class AdopterResource {
         return adopterService.getAll();
     }
 
+    @GetMapping(path = "{adopterId}")
+    public Adopter getById(@PathVariable("adopterId") String adopterId){
+        return adopterService.findById(adopterId);
+    }
+
     @PostMapping
     public void addNewAdopter(@RequestBody AdopterForm adopterForm){
         adopterService.creteAdopter(adopterForm);

@@ -14,22 +14,22 @@ public class DataInitializer {
 
     private final PetRepository petRepository;
 
-    @PostConstruct
-    public void initData(){
-        Pet p1 = Pet.build("Jimi",
-                        "Machka",
-                        "Crna machka, 2 godini staro etc etc..",
-                            "Test"
-                            );
-
-        Pet p2 = Pet.build("Bruno1",
-                        "Kuche",
-                        "Kafeavo kuche, 6 meseci staro",
-                            "Test2"
-                            );
-
-        if(petRepository.findAll().isEmpty()){
-            petRepository.saveAll(Arrays.asList(p1,p2));
-        }
-    }
+//    @PostConstruct
+//    public void initData(){
+//        Pet p1 = Pet.build("Jimi",
+//                        "Machka",
+//                        "Crna machka, 2 godini staro etc etc..",
+//                            "Test"
+//                            );
+//
+//        Pet p2 = Pet.build("Bruno1",
+//                        "Kuche",
+//                        "Kafeavo kuche, 6 meseci staro",
+//                            "Test2"
+//                            );
+//
+//        if(petRepository.findAll().isEmpty()){
+//            petRepository.saveAll(Arrays.asList(p1,p2));
+//        }
+//    }
 }
