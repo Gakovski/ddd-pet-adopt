@@ -1,20 +1,11 @@
 package mk.ukim.finki.emt.petcatalog.xport.events;
 
 import lombok.AllArgsConstructor;
-import mk.ukim.finki.emt.petcatalog.domain.models.PetId;
-import mk.ukim.finki.emt.petcatalog.domain.repository.PetRepository;
 import mk.ukim.finki.emt.petcatalog.services.PetService;
 import mk.ukim.finki.emt.sharedkernel.domain.config.TopicHolder;
-import mk.ukim.finki.emt.sharedkernel.domain.events.DomainEvent;
 
-import mk.ukim.finki.emt.sharedkernel.domain.events.orders.OrderApproved;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
-
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @AllArgsConstructor
