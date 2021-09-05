@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/adopter")
+@CrossOrigin(origins = "http://localhost:3000")
 @AllArgsConstructor
 public class AdopterResource {
 
