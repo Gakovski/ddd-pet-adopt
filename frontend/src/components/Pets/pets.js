@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import petRepository from "../../repository/petRepository";
 
 function Copyright() {
     return (
@@ -61,9 +62,8 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Pets(props) {
+function Pets(props) {
     const classes = useStyles();
-
     return (
         <React.Fragment>
             <CssBaseline />
@@ -79,22 +79,27 @@ export default function Pets(props) {
                 <Container className={classes.cardGrid} maxWidth="md">
                     {/* End hero unit */}
                     <Grid container spacing={4}>
-                        {cards.map((card) => (
+                        {/*{props.pets.forEach((card) => (*/}
+                        {props.pets.map((card)=> (
                             <Grid item key={card} xs={12} sm={6} md={4}>
                                 <Card className={classes.card}>
                                     <CardMedia
                                         className={classes.cardMedia}
-                                        image="https://source.unsplash.com/random"
+                                        //image="https://source.unsplash.com/random"
+                                        image="https://www.liveabout.com/thmb/w4u4Uuu10rotIlVXzVJwt2RQtnw=/560x410/filters:no_upscale():max_bytes(150000):strip_icc()/dog-smile-buzzfeed-58b8ed1d5f9b58af5c9c85c3.jpg"
                                         title="Image title"
                                     />
-                                    <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Test
-                                        </Typography>
-                                        <Typography>
-                                            This is a media card. You can use this section to describe the content.
-                                        </Typography>
-                                    </CardContent>
+                                            <CardContent className={classes.cardContent}>
+                                                <Typography  gutterBottom variant="h5" component="h2">
+                                                    {card.petName}
+                                                </Typography>
+                                                <Typography gutterBottom variant="h10" component="h5">
+                                                    {card.petBreed}
+                                                </Typography>
+                                                <Typography>
+                                                    {card.petDescription}
+                                                </Typography>
+                                            </CardContent>
                                     <CardActions>
                                         <Button size="small" color="primary">
                                             Adopt
@@ -121,7 +126,7 @@ export default function Pets(props) {
     );
 }
 
-
+export default Pets;
 
 //
 // const pets = (props) => {
