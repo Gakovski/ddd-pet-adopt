@@ -29,7 +29,7 @@ public class PetServiceImpl implements PetService {
     @Override
     public Pet createPet(PetForm form) {
         Pet p = Pet.build(form.getPetName(),
-                form.getPetTypeName(),
+                form.getPetImageUrl(),
                 form.getPetDescription(),
                 form.getPetBreed());
         petRepository.save(p);

@@ -6,7 +6,7 @@ import lombok.Data;
 public class PetForm {
 
     private String petName;
-    private String petTypeName;
+    private String petImageUrl;
     private String petDescription;
     private String petBreed;
 }

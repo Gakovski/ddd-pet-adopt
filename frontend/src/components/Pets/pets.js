@@ -101,7 +101,7 @@ function Pets(props) {
                                                 </Typography>
                                             </CardContent>
                                     <CardActions>
-                                        <Button size="small" color="primary">
+                                        <Button size="small" variant="outlined" color="primary">
                                             Adopt
                                         </Button>
                                     </CardActions>

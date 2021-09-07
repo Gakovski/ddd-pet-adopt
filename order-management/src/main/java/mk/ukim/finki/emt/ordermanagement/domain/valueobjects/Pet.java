@@ -10,7 +10,7 @@ public class Pet implements ValueObject {
 
     private final PetId id;
     private final String name;
-    private final String petTypeName;
+    private final String petImageUrl;
     private final String petDescription;
     private final String petBreed;
     private Boolean isAdopted;
@@ -18,7 +18,7 @@ public class Pet implements ValueObject {
     private Pet(){
         this.id=PetId.randomId(PetId.class);
         this.name= "";
-        this.petTypeName="";
+        this.petImageUrl="";
         this.petDescription="";
         this.petBreed="";
         this.isAdopted=false;
@@ -29,7 +29,7 @@ public class Pet implements ValueObject {
         return "Pet{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", petTypeName='" + petTypeName + '\'' +
+                ", petImageUrl='" + petImageUrl + '\'' +
                 ", petDescription='" + petDescription + '\'' +
                 ", petBreed='" + petBreed + '\'' +
                 ", isAdopted=" + isAdopted +
@@ -39,13 +39,13 @@ public class Pet implements ValueObject {
     @JsonCreator
     public Pet(@JsonProperty("id") PetId id,
                @JsonProperty("petName") String name,
-               @JsonProperty("petTypeName") String petTypeName,
+               @JsonProperty("petImageUrl") String petImageUrl,
                @JsonProperty("petDescription") String petDescription,
                @JsonProperty("petBreed") String petBreed
     ) {
         this.id = id;
         this.name = name;
-        this.petTypeName = petTypeName;
+        this.petImageUrl = petImageUrl;
         this.petDescription = petDescription;
         this.petBreed = petBreed;
         this.isAdopted = false;
