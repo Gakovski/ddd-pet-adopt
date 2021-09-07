@@ -76,9 +76,9 @@ function Pets(props) {
                 </Toolbar>
             </AppBar>
             <main>
-                <Container className={classes.cardGrid} maxWidth="md">
+                <Container className={classes.cardGrid} maxWidth="lg">
                     {/* End hero unit */}
-                    <Grid container spacing={4}>
+                    <Grid container spacing={5}>
                         {/*{props.pets.forEach((card) => (*/}
                         {props.pets.map((card)=> (
                             <Grid item key={card} xs={12} sm={6} md={4}>
@@ -86,7 +86,8 @@ function Pets(props) {
                                     <CardMedia
                                         className={classes.cardMedia}
                                         //image="https://source.unsplash.com/random"
-                                        image="https://www.liveabout.com/thmb/w4u4Uuu10rotIlVXzVJwt2RQtnw=/560x410/filters:no_upscale():max_bytes(150000):strip_icc()/dog-smile-buzzfeed-58b8ed1d5f9b58af5c9c85c3.jpg"
+                                        //image="https://www.liveabout.com/thmb/w4u4Uuu10rotIlVXzVJwt2RQtnw=/560x410/filters:no_upscale():max_bytes(150000):strip_icc()/dog-smile-buzzfeed-58b8ed1d5f9b58af5c9c85c3.jpg"
+                                        image={card.petImageUrl}
                                         title="Image title"
                                     />
                                             <CardContent className={classes.cardContent}>
@@ -100,11 +101,22 @@ function Pets(props) {
                                                     {card.petDescription}
                                                 </Typography>
                                             </CardContent>
-                                    <CardActions>
-                                        <Button size="small" variant="outlined" color="primary">
-                                            Adopt
-                                        </Button>
-                                    </CardActions>
+
+                                        {card.isAdopted ? (
+                                                <CardActions>
+                                                    <Button size="small" variant="outlined" disabled>
+                                                        Not available
+                                                    </Button>
+                                                </CardActions>
+
+                                    ) : (
+                                            <CardActions>
+                                                <Button size="small" variant="outlined">
+                                                    Adopt
+                                                </Button>
+                                            </CardActions>
+                                    )}
+
                                 </Card>
                             </Grid>
                         ))}
