@@ -1,4 +1,4 @@
-import axios from "../custom-axios/axios";
+import axios from "../custom-axios/axiosPet";
 
 const PetService = {
     fetchPets: () => {
