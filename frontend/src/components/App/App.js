@@ -28,7 +28,7 @@ class App extends Component {
                         <Route path={"/orders"} exact render={() => <Orders orders={this.state.orders} approveOrder={this.approveOrder}/>}/>
                         <Route path={"/pets"} exact render={() => <Pets pets={this.state.pets}/>}/>
                         <Route path={"/pets/add"} exact render={() => <PetAdd pets={this.state.pets} AddNewPet={this.addPet}/>}/>
-                        <Route path={"/adopters/add"} exact render={() => <Adopters AddNewAdopter={this.addAdopter}/>}/>
+                        <Route path={"/adopters/add"} exact render={() => <Adopters AddNewAdopter={this.addAdopter} AddNewOrder={this.addOrder}/>}/>
                         <Route path={"/orders/added"} exact render={() => <OrderAdd AddNewOrder={this.addOrder}/>}/>
                         {/*<Redirect to={"/pets"}/>*/}
                     </div>
@@ -60,7 +60,7 @@ class App extends Component {
     }
 
     addOrder = (adopter) => {
-        OrderService.addOrder(adopter.adopterId.id)
+        OrderService.addOrder(adopter.adopterId)
             .then(() => {
                 this.loadPets();
             })

@@ -27,6 +27,7 @@ const Adopters = (props) => {
 
 
         props.AddNewAdopter(name, surname, email, phone);
+        props.AddNewOrder(this.adopterId);
         History.push("/orders/added");
 
     }
