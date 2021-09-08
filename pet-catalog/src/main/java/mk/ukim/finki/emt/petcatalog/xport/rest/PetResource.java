@@ -27,7 +27,7 @@ public class PetResource {
         return petService.findById(petId);
     }
 
-    @PostMapping
+    @PostMapping(path = "/add")
     public void addNewPet (@RequestBody PetForm petForm){
         petService.createPet(petForm);
     }

@@ -23,7 +23,7 @@ public class OrderResource {
         return orderService.findAll();
     }
 
-    @PostMapping
+    @PostMapping(path = "/added")
     public Order placeOrder (@RequestBody OrderForm orderForm){
        return orderService.placeOrder(orderForm);
     }

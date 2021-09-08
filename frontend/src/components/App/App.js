@@ -1,17 +1,22 @@
 import './App.css';
 import React, {Component} from "react";
-import Pets from '../Pets/pets'
+import Pets from '../Pets/Pets'
 import PetService from "../../repository/petRepository";
 import {BrowserRouter as Router, Redirect, Route} from "react-router-dom";
 import Orders from '../Orders/orders';
 import OrderService from "../../repository/orderRepository";
+import PetAdd from "../Pets/PetAdd/petAdd";
+import Adopters from "../Adopters/adopters"
+import AdopterService from "../../repository/adopterRepository";
+import OrderAdd from "../Orders/OrderAdd/orderAdd"
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             pets: [],
-            orders: []
+            orders: [],
+            adopters: []
         }
 
     }
@@ -20,8 +25,12 @@ class App extends Component {
             <Router>
                 <main>
                     <div className="container">
-                        <Route path={"/pets"} exact render={() => <Pets pets={this.state.pets}/>}/>
                         <Route path={"/orders"} exact render={() => <Orders orders={this.state.orders} approveOrder={this.approveOrder}/>}/>
+                        <Route path={"/pets"} exact render={() => <Pets pets={this.state.pets}/>}/>
+                        <Route path={"/pets/add"} exact render={() => <PetAdd pets={this.state.pets} AddNewPet={this.addPet}/>}/>
+                        <Route path={"/adopters/add"} exact render={() => <Adopters AddNewAdopter={this.addAdopter}/>}/>
+                        <Route path={"/orders/added"} exact render={() => <OrderAdd AddNewOrder={this.addOrder}/>}/>
+                        {/*<Redirect to={"/pets"}/>*/}
                     </div>
                 </main>
             </Router>
@@ -35,6 +44,28 @@ class App extends Component {
             })
         });
     }
+
+    addPet = (petName,petImageUrl, petDescription, petBreed) => {
+        PetService.addPet(petName,petImageUrl, petDescription, petBreed)
+            .then(() => {
+                this.loadPets();
+            });
+    }
+
+    addAdopter = (name, surname, email, phone) => {
+        AdopterService.addAdopter(name, surname, email, phone)
+            .then(() => {
+                this.loadOrders();
+            })
+    }
+
+    addOrder = (adopter) => {
+        OrderService.addOrder(adopter.adopterId.id)
+            .then(() => {
+                this.loadPets();
+            })
+    }
+
 
     loadOrders = () => {
         OrderService.fetchOrders()

@@ -73,6 +73,13 @@ function Pets(props) {
                     <Typography variant="h6" color="inherit" noWrap>
                         PET ADOPT WEBAPP
                     </Typography>
+
+                    <CardActions style={{margin: '0 auto', display: "flex"}}>
+                        <Button variant="contained" color="default" href="/pets/add">
+                            Add New Pet
+                        </Button>
+                    </CardActions>
+
                 </Toolbar>
             </AppBar>
             <main>
@@ -111,7 +118,8 @@ function Pets(props) {
 
                                     ) : (
                                             <CardActions>
-                                                <Button size="small" variant="outlined">
+                                                <Button size="small" variant="outlined" href="/adopters/add">
+                                                    {/*Koga kje kliknam na ova kopche, sakam da go pratam i ID-to na milenikot na koj sum kliknal*/}
                                                     Adopt
                                                 </Button>
                                             </CardActions>

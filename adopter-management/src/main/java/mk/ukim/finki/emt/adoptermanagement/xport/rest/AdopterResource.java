@@ -27,7 +27,7 @@ public class AdopterResource {
         return adopterService.findById(adopterId);
     }
 
-    @PostMapping
+    @PostMapping(path = "/add")
     public void addNewAdopter(@RequestBody AdopterForm adopterForm){
         adopterService.creteAdopter(adopterForm);
     }
