@@ -1,5 +1,6 @@
 import {useHistory, useLocation} from "react-router-dom";
 import React from "react";
+import Navbar from "../App/Navbar";
 
 const Adopters = (props) => {
 
@@ -38,61 +39,65 @@ const Adopters = (props) => {
     }
 
     return(
-        <div className="row mt-5">
-            <div className="col-md-5">
-                <form onSubmit={OnFormSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="name">Your Name</label>
-                        <input type="text"
-                               className="form-control"
-                               id="name"
-                               name="name"
-                               required
-                               placeholder="Enter your name"
-                               onChange={HandleChange}
-                        />
-                    </div>
+        <div>
+            <Navbar/>
+            <div className="row mt-5">
+                <div className="col-md-5">
+                    <form onSubmit={OnFormSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="name">Your Name</label>
+                            <input type="text"
+                                   className="form-control"
+                                   id="name"
+                                   name="name"
+                                   required
+                                   placeholder="Enter your name"
+                                   onChange={HandleChange}
+                            />
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="surname">Your Surname</label>
-                        <input type="text"
-                               className="form-control"
-                               id="surname"
-                               name="surname"
-                               placeholder="Enter your surname"
-                               required
-                               onChange={HandleChange}
-                        />
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="surname">Your Surname</label>
+                            <input type="text"
+                                   className="form-control"
+                                   id="surname"
+                                   name="surname"
+                                   placeholder="Enter your surname"
+                                   required
+                                   onChange={HandleChange}
+                            />
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="email">Your E-mail</label>
-                        <input type="text"
-                               className="form-control"
-                               id="email"
-                               name="email"
-                               placeholder="Enter your e-mail"
-                               required
-                               onChange={HandleChange}
-                        />
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Your E-mail</label>
+                            <input type="text"
+                                   className="form-control"
+                                   id="email"
+                                   name="email"
+                                   placeholder="Enter your e-mail"
+                                   required
+                                   onChange={HandleChange}
+                            />
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="phone">Your Phone Number</label>
-                        <input type="text"
-                               className="form-control"
-                               id="phone"
-                               name="phone"
-                               placeholder="Enter your phone number"
-                               required
-                               onChange={HandleChange}
-                        />
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="phone">Your Phone Number</label>
+                            <input type="text"
+                                   className="form-control"
+                                   id="phone"
+                                   name="phone"
+                                   placeholder="Enter your phone number"
+                                   required
+                                   onChange={HandleChange}
+                            />
+                        </div>
 
-                    <button id="submit" type="submit" className="btn btn-primary">Submit</button>
-                </form>
+                        <button id="submit" type="submit" className="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
+
     )
 
 }

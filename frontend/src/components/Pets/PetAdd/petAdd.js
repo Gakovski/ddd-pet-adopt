@@ -1,6 +1,6 @@
 import React from "react";
 import {useHistory} from 'react-router-dom';
-
+import Navbar from "../../App/Navbar";
 const PetAdd = (props) => {
 
     const History = useHistory();
@@ -33,7 +33,9 @@ const PetAdd = (props) => {
 
 
     return(
-        <div className="row mt-5">
+        <div>
+            <Navbar/>
+            <div className="row mt-5">
             <div className="col-md-5">
                 <form onSubmit={OnFormSubmit}>
                     <div className="form-group">
@@ -87,6 +89,7 @@ const PetAdd = (props) => {
                     <button id="submit" type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
+        </div>
         </div>
     )
 

@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {Link} from 'react-router-dom';
+import Navbar from '../App/Navbar';
+
 import petRepository from "../../repository/petRepository";
 import data from "bootstrap/js/src/dom/data";
 
@@ -70,21 +72,7 @@ function Pets(props) {
     return (
         <React.Fragment>
             <CssBaseline />
-            <AppBar position="relative">
-                <Toolbar>
-                    <PetsIcon className={classes.icon} />
-                    <Typography variant="h6" color="inherit" noWrap>
-                        PET ADOPT WEBAPP
-                    </Typography>
-
-                    <CardActions style={{margin: '0 auto', display: "flex"}}>
-                        <Button variant="contained" color="default" href="/pets/add">
-                            Add New Pet
-                        </Button>
-                    </CardActions>
-
-                </Toolbar>
-            </AppBar>
+            <Navbar/>
             <main>
                 <Container className={classes.cardGrid} maxWidth="lg">
                     {/* End hero unit */}
@@ -125,12 +113,11 @@ function Pets(props) {
                                                         pathname:"/adopters/add", state:{ data : test(card)}
 
                                                     }}>
-                                                    dsadasas
+                                                        <Button size="small" variant="outlined" href="/adopters/add">
+                                                            {/*Koga kje kliknam na ova kopche, sakam da go pratam i ID-to na milenikot na koj sum kliknal*/}
+                                                            Adopt
+                                                        </Button>
                                                 </Link>
-                                                <Button size="small" variant="outlined" href="/adopters/add">
-                                                    {/*Koga kje kliknam na ova kopche, sakam da go pratam i ID-to na milenikot na koj sum kliknal*/}
-                                                    Adopt
-                                                </Button>
                                             </CardActions>
                                     )}
 

@@ -31,7 +31,6 @@ class App extends Component {
                         <Route path={"/pets/add"} exact render={() => <PetAdd pets={this.state.pets} AddNewPet={this.addPet}/>}/>
                         <Route path={"/adopters/add"} exact render={() => <Adopters AddNewAdopter={this.addAdopter} AddNewOrder={this.addOrder}/>}/>
                         <Route path={"/orders/added"} exact render={() => <OrderAdd AddNewOrder={this.addOrder}/>}/>
-                        {/*<Redirect to={"/pets"}/>*/}
                     </div>
                 </main>
             </Router>
