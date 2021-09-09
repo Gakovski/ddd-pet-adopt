@@ -16,7 +16,8 @@ class App extends Component {
         this.state = {
             pets: [],
             orders: [],
-            adopters: []
+            adopters: [],
+            adopterId: ""
         }
 
     }
@@ -52,15 +53,19 @@ class App extends Component {
             });
     }
 
-    addAdopter = (name, surname, email, phone) => {
-        AdopterService.addAdopter(name, surname, email, phone)
-            .then(() => {
-                this.loadOrders();
-            })
+    addAdopter = async (name, surname, email, phone) => {
+
+        const adopter = await AdopterService.addAdopter(name, surname, email, phone)
+            .then(result => this.setState({
+                adopterId : result.data.id.id
+            }))
+
+        return this.state.adopterId;
     }
 
-    addOrder = (adopter) => {
-        OrderService.addOrder(adopter.adopterId)
+    addOrder = (adopterID, petID) => {
+
+        OrderService.addOrder(adopterID, petID)
             .then(() => {
                 this.loadPets();
             })
@@ -73,9 +78,9 @@ class App extends Component {
                 this.setState({
                     orders: data.data
                 })
-                data.data.map(element => {
-                    console.log(element.orderId.id);
-                })
+                // data.data.map(element => {
+                //     //console.log(element.orderId.id);
+                // })
             });
     }
 

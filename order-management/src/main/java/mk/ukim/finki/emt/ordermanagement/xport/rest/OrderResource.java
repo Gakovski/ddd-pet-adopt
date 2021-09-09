@@ -7,6 +7,7 @@ import mk.ukim.finki.emt.ordermanagement.domain.model.OrderId;
 import mk.ukim.finki.emt.ordermanagement.service.OrderService;
 import mk.ukim.finki.emt.ordermanagement.service.forms.OrderForm;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import java.util.List;
 
@@ -15,7 +16,6 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 @AllArgsConstructor
 public class OrderResource {
-
     private final OrderService orderService;
 
     @GetMapping

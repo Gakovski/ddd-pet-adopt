@@ -12,7 +12,8 @@ const OrderService = {
     },
 
     addOrder: (adopterId, petId) => {
-        return axiosAdopter.post("/order", {
+        //console.log("Service ",adopterId, petId)
+        return axiosOrder.post("/order/added", {
             "adopterId": adopterId,
             "petId": petId
         })

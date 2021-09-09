@@ -10,9 +10,9 @@ import javax.validation.constraints.NotNull;
 public class OrderForm {
 
     @NotNull
-    private AdopterId adopterId;
+    private String adopterId;
 
     @NotNull
-    private PetId petId;
+    private String petId;
 
 }

@@ -47,9 +47,9 @@ public class OrderServiceImpl implements OrderService {
         List<OrderInfoDtoResponse> orderList = new ArrayList();
         for(Order order: orders){
             OrderInfoDtoResponse dto = new OrderInfoDtoResponse();
-            Optional<Pet> pet = petClient.findById(order.getPetId().getId());
+            Optional<Pet> pet = petClient.findById(order.getPetId());
             pet.ifPresent(dto::setPet);
-            Optional<Adopter> adopter = adopterClient.findById(order.getAdopterId().getId());
+            Optional<Adopter> adopter = adopterClient.findById(order.getAdopterId());
             adopter.ifPresent(dto::setAdopter);
             dto.setOrderId(order.getId());
             dto.setIsApproved(order.isApproved());
@@ -95,7 +95,7 @@ public class OrderServiceImpl implements OrderService {
         List<Order> orderList = orderRepository.findAll();
 
         for (Order orderToBeDeleted : orderList) {
-            if (!orderToBeDeleted.isApproved() && orderToBeDeleted.getPetId().getId().equals(order.getPetId().getId())){
+            if (!orderToBeDeleted.isApproved() && orderToBeDeleted.getPetId().equals(order.getPetId())){
                 orderRepository.deleteById(orderToBeDeleted.getId());
             }
         }
@@ -103,7 +103,7 @@ public class OrderServiceImpl implements OrderService {
         //otkakko kje gi izbrisheme site false orders
         //treba da go smenime statusot na posvoenoto mileniche od false vo true(adopted = true)
         //domainEventPublisher.publish(new OrderApproved("e49b4057-582b-42fa-beed-e3b9e6811cdc"));
-        domainEventPublisher.publish(new OrderApproved(order.getPetId().getId()));
+        domainEventPublisher.publish(new OrderApproved(order.getPetId()));
     }
 
 }

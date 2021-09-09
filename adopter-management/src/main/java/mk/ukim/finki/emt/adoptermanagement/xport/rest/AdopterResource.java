@@ -5,6 +5,7 @@ import mk.ukim.finki.emt.adoptermanagement.domain.models.Adopter;
 import mk.ukim.finki.emt.adoptermanagement.domain.models.AdopterId;
 import mk.ukim.finki.emt.adoptermanagement.services.AdopterService;
 import mk.ukim.finki.emt.adoptermanagement.services.forms.AdopterForm;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,8 +29,9 @@ public class AdopterResource {
     }
 
     @PostMapping(path = "/add")
-    public void addNewAdopter(@RequestBody AdopterForm adopterForm){
-        adopterService.creteAdopter(adopterForm);
+    public ResponseEntity<Adopter> addNewAdopter(@RequestBody AdopterForm adopterForm){
+        Adopter temp = adopterService.creteAdopter(adopterForm);
+        return ResponseEntity.ok(temp);
     }
 
     @DeleteMapping(path = "{adopterId}")

@@ -17,17 +17,17 @@ public class Order extends AbstractEntity<OrderId> {
 
     @AttributeOverride(name="id",
             column = @Column(name = "adopter_id", nullable = false))
-    private AdopterId adopterId;
+    private String adopterId;
 
     @AttributeOverride(name="id",
             column = @Column(name = "pet_id",nullable = false))
-    private PetId petId;
+    private String petId;
 
     public Order(){
         super(OrderId.randomId(OrderId.class));
     }
 
-    public Order(@NonNull AdopterId adopterId, PetId petId, boolean isApproved) {
+    public Order(@NonNull String adopterId, String petId, boolean isApproved) {
         super(OrderId.randomId(OrderId.class));
         this.adopterId = adopterId;
         this.petId = petId;

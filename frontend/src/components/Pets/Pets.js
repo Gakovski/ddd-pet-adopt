@@ -12,8 +12,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 import petRepository from "../../repository/petRepository";
+import data from "bootstrap/js/src/dom/data";
 
 function Copyright() {
     return (
@@ -59,7 +60,9 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(6),
     },
 }));
-
+function test(data) {
+    return data.id.id;
+}
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function Pets(props) {
@@ -118,6 +121,12 @@ function Pets(props) {
 
                                     ) : (
                                             <CardActions>
+                                                    <Link to={{
+                                                        pathname:"/adopters/add", state:{ data : test(card)}
+
+                                                    }}>
+                                                    dsadasas
+                                                </Link>
                                                 <Button size="small" variant="outlined" href="/adopters/add">
                                                     {/*Koga kje kliknam na ova kopche, sakam da go pratam i ID-to na milenikot na koj sum kliknal*/}
                                                     Adopt

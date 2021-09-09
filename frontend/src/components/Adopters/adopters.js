@@ -1,7 +1,10 @@
-import {useHistory} from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 import React from "react";
 
 const Adopters = (props) => {
+
+    const location = useLocation();
+    const { data } = location.state;
 
     const History = useHistory();
     const [formData, updateFormData] = React.useState({
@@ -25,13 +28,14 @@ const Adopters = (props) => {
         const email = formData.email;
         const phone = formData.phone;
 
+        props.AddNewAdopter(name, surname, email, phone).then((ADOPTER_ID) =>{
+           props.AddNewOrder(ADOPTER_ID, data)
+        });
 
-        props.AddNewAdopter(name, surname, email, phone);
-        props.AddNewOrder(this.adopterId);
+
         History.push("/orders/added");
 
     }
-
 
     return(
         <div className="row mt-5">
