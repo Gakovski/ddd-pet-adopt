@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Table(name = "adopter")
 @Getter
 public class Adopter extends AbstractEntity<AdopterId> {
-
     private String name;
     private String surname;
     private String email;
